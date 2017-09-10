@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 42525f09f5ddd387d29d3b2695aac08d
+ * @relayHash 1ff131fb8d52bfbab55221f2108dfd1b
  */
 
 /* eslint-disable */
@@ -29,6 +29,10 @@ export type CreateLinkMutationResponse = {|
       +createdAt: any;
       +url: string;
       +description: string;
+      +postedBy: ?{|
+        +id: string;
+        +name: string;
+      |};
     |};
   |};
 |};
@@ -45,6 +49,10 @@ mutation CreateLinkMutation(
       createdAt
       url
       description
+      postedBy {
+        id
+        name
+      }
     }
   }
 }
@@ -113,6 +121,31 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "description",
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "User",
+                "name": "postedBy",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "name",
+                    "storageKey": null
+                  }
+                ],
                 "storageKey": null
               }
             ],
@@ -191,6 +224,31 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "description",
                 "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "User",
+                "name": "postedBy",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "name",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -200,7 +258,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation CreateLinkMutation(\n  $input: CreateLinkInput!\n) {\n  createLink(input: $input) {\n    link {\n      id\n      createdAt\n      url\n      description\n    }\n  }\n}\n"
+  "text": "mutation CreateLinkMutation(\n  $input: CreateLinkInput!\n) {\n  createLink(input: $input) {\n    link {\n      id\n      createdAt\n      url\n      description\n      postedBy {\n        id\n        name\n      }\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

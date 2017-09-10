@@ -1,12 +1,14 @@
 # project: cj7efiax70p7n0114smn4twtm
-# version: 2
+# version: 3
 
 type User implements Node {
   name: String!
   links: [Link!]! @relation(name: "UsersLinks")
   votes: [Vote!]! @relation(name: "UsersVotes")
   createdAt: DateTime!
+  email: String @isUnique
   id: ID! @isUnique
+  password: String
   updatedAt: DateTime!
 }
 
