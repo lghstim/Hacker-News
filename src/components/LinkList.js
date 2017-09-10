@@ -6,15 +6,20 @@ import {
 } from 'react-relay'
 
 class LinkList extends Component {
-   render() {
-   return (
+  render() {
+    return (
       <div>
-         {this.props.viewer.allLinks.edges.map(({node}) =>
-            <Link key={node.__id} link={node} />
-         )}
+        <div>
+          {this.props.viewer.allLinks.edges.map(({node}, index) => (
+            <Link key={node.__id} index={index} link={node}/>
+          ))}
+        </div>
+        <div className='flex ml4 mv3 gray'>
+          <div className='pointer' onClick={() => this._loadMore()}>More</div>
+        </div>
       </div>
-   )
-   }
+    )
+  }
 }
 
 export default createFragmentContainer(LinkList, graphql`

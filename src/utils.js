@@ -1,5 +1,3 @@
-
-
 function timeDifference(current, previous) {
 
   const milliSecondsPerMinute = 60 * 1000
